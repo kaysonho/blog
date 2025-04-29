@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pmsm Model on Example Site</title>
+        <link>http://localhost:1313/tags/pmsm-model/</link>
+        <description>Recent content in Pmsm Model on Example Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/pmsm-model/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PMSM model</title>
+        <link>http://localhost:1313/p/pmsm-model/</link>
+        <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/pmsm-model/</guid>
+        <description>&lt;img src="http://localhost:1313/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post PMSM model" /&gt;&lt;h1 id=&#34;pmsm-model&#34;&gt;PMSM model
+&lt;/h1&gt;&lt;h2 id=&#34;transformation-变换&#34;&gt;Transformation 变换
+&lt;/h2&gt;&lt;h3 id=&#34;clark--3s-2s&#34;&gt;CLARK / 3s-2s
+&lt;/h3&gt;$$
+\begin{aligned}
+    \begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix} &amp;= \frac{2}{3}
+    \begin{bmatrix*}
+        1          &amp; -1/2       &amp; -1/2        \\
+        0          &amp; \sqrt{3}/2 &amp; -\sqrt{3}/2 \\
+        1/\sqrt{2} &amp; 1/\sqrt{2} &amp; 1/\sqrt{2}  \\
+    \end{bmatrix*}
+    \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix}  
+    = \pmb{T}_{\text{3s-2s}} \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix} \\
+    \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix} &amp;= \phantom{-}
+    \begin{bmatrix*}
+        1    &amp; 0           &amp; 1/\sqrt{2} \\
+        -1/2 &amp; \sqrt{3}/2  &amp; 1/\sqrt{2} \\
+        -1/2 &amp; -\sqrt{3}/2 &amp; 1/\sqrt{2} \\
+    \end{bmatrix*}
+    \begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix}  
+    =\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix}
+\end{aligned}
+$$&lt;h3 id=&#34;park--2s-2r&#34;&gt;PARK / 2s-2r
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\begin{bmatrix} d \\ q \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix*}
+        \phantom{-}\cos\theta_e &amp; -\sin\theta_e \\
+        \phantom{-}\sin\theta_e &amp; \phantom{-}\cos\theta_e\\
+    \end{bmatrix*}}
+    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}}
+    ={\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}}\\
+    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}} &amp;=
+    {\begin{bmatrix*}
+        \phantom{-}\cos\theta_e &amp; \phantom{-}\sin\theta_e \\
+        -\sin\theta_e &amp; \phantom{-}\cos\theta_e\\
+    \end{bmatrix*}}
+    {\begin{bmatrix} d \\ q \end{bmatrix}}    =
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} d \\ q \end{bmatrix}  }
+\end{aligned}
+$$&lt;h2 id=&#34;a-b-c&#34;&gt;&lt;em&gt;a-b-c&lt;/em&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;voltage&#34;&gt;voltage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{u_s}} &amp;= \pmb{R_s i_s}+ \frac{d}{dt} \pmb{\it{\Psi_s}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix} u_a \\ u_b \\ u_c \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +p
+    {\begin{bmatrix} \it{\Psi}_a \\ \it{\Psi}_b \\ \it{\Psi}_c \\ \end{bmatrix}}
+    \\ &amp;=
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +p
+    {\begin{Bmatrix}
+        {\begin{bmatrix}
+            L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+            M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+            M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+        \end{bmatrix}}
+        {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +
+        {\begin{bmatrix} \it{\Psi}_{fa} \\ \it{\Psi}_{fb} \\ \it{\Psi}_{fc} \\ \end{bmatrix}}
+    \end{Bmatrix}} \\
+\end{aligned}
+$$&lt;h3 id=&#34;flux-leakage&#34;&gt;flux leakage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{\it{\Psi_s}}}={\pmb{L_s i_s}}+{\pmb{\it{\Psi_f}}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix} \it{\Psi}_a \\ \it{\Psi}_b \\ \it{\Psi}_c \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix}
+        L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+        M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+        M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+    \end{bmatrix}}
+    {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +
+    {\begin{bmatrix} \it{\Psi}_{fa} \\ \it{\Psi}_{fb} \\ \it{\Psi}_{fc} \\ \end{bmatrix}}
+    \\ &amp;=
+    {\begin{bmatrix}
+        L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+        M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+        M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+    \end{bmatrix}}
+    {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} + {\it\Psi_f}
+    {\begin{bmatrix*}[l]
+        \cos(\theta_e) \\
+        \cos(\theta_e-2\pi/3) \\
+        \cos(\theta_e+2\pi/3) \\
+    \end{bmatrix*}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix}
+        L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+        M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+        M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+    \end{bmatrix}}
+    &amp;=
+    {\begin{bmatrix*}[l]
+        \phantom{-}L_{s0}\;+L_{s2}\cos(2(\theta_e)) &amp; -M_{s0}+L_{s2}\cos(2(\theta_e-\pi/3)) &amp; -M_{s0}+L_{s2}\cos(2(\theta_e+\pi/3)) \\
+        -M_{s0}+L_{s2}\cos(2(\theta_e-\pi/3)) &amp; \phantom{-}L_{s0}\;+L_{s2}\cos(2(\theta_e-2\pi/3)) &amp; -M_{s0}+L_{s2}\cos(2(\theta_e)) \\
+        -M_{s0}+L_{s2}\cos(2(\theta_e+\pi/3)) &amp; -M_{s0}+L_{s2}\cos(2(\theta_e)) &amp;\phantom{-}L_{s0}\;+L_{s2}\cos(2(\theta_e+2\pi/3)) \\
+    \end{bmatrix*}}
+\end{aligned}
+$$&lt;h2 id=&#34;α-β&#34;&gt;&lt;em&gt;α-β&lt;/em&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;a-b-c-to-α-β&#34;&gt;&lt;em&gt;a-b-c&lt;/em&gt; to &lt;em&gt;α-β&lt;/em&gt;
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\begin{bmatrix} u_a \\ u_b \\ u_c \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+            M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+            M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+        \end{bmatrix}}}
+        {\begin{bmatrix} i_a \\ i_b \\ i_c \\ \end{bmatrix}} +{\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos(\theta_e) \\
+            \cos(\theta_e-2\pi/3) \\
+            \cos(\theta_e+2\pi/3) \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+    {\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} +p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+            M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+            M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+        \end{bmatrix}}}
+        \pmb{T}_{\text{3s-2s}}^{-1}{\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos(\theta_e) \\
+            \cos(\theta_e-2\pi/3) \\
+            \cos(\theta_e+2\pi/3) \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} &amp;= \pmb{T}_{\text{3s-2s}}
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} + \pmb{T}_{\text{3s-2s}}\;p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+            M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+            M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+        \end{bmatrix}}}
+        \pmb{T}_{\text{3s-2s}}^{-1}{\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} +{\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos(\theta_e) \\
+            \cos(\theta_e-2\pi/3) \\
+            \cos(\theta_e+2\pi/3) \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+\end{aligned}
+$$$$
+\begin{aligned}
+    &amp;{\pmb{T}_{\text{3s-2s}}}
+    {\begin{bmatrix} R_s &amp; 0 &amp; 0 \\ 0 &amp; R_s &amp; 0 \\ 0 &amp; 0 &amp; R_s \\ \end{bmatrix}}
+    {\pmb{T}_{\text{3s-2s}}^{-1}} =
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}} \\
+    &amp;{\pmb{T}_{\text{3s-2s}}}
+    {{\begin{bmatrix}
+        L_{aa} &amp; M_{ab} &amp; M_{ac} \\
+        M_{ba} &amp; L_{bb} &amp; M_{bc} \\
+        M_{ca} &amp; M_{cc} &amp; L_{cc} \\
+    \end{bmatrix}}}
+    {\pmb{T}_{\text{3s-2s}}^{-1}} =
+    {\begin{bmatrix*}[r]
+        L_{s0}+M_{s0}+3/2\;L_{s2}\cos(2(\theta_e)) &amp; 3/2\;L_{s2}\sin(2(\theta_e))       \\
+        3/2\;L_{s2}\sin(2(\theta_e))             &amp; L_{s0}+M_{s0}-3/2\;L_{s2}\cos(2(\theta_e)) \\
+    \end{bmatrix*}} \\
+    &amp;{\pmb{T}_{\text{3s-2s}}}
+    {\begin{bmatrix*}[l]
+        \cos(\theta_e) \\
+        \cos(\theta_e-2\pi/3) \\
+        \cos(\theta_e+2\pi/3) \\
+    \end{bmatrix*}} =
+    {\begin{bmatrix*}[l]
+        \cos(\theta_e) \\
+        \sin(\theta_e)
+    \end{bmatrix*}}
+\end{aligned}
+$$&lt;h3 id=&#34;α-β-voltage&#34;&gt;&lt;em&gt;α-β&lt;/em&gt; voltage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{u_{\alpha\beta}}} &amp;= \pmb{R_s i_{\alpha\beta}}+ \frac{d}{dt} \pmb{\it{\Psi_{\alpha\beta}}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} + p
+    {\begin{bmatrix*}[l]
+        {\it\Psi_{\alpha}} \\
+        {\it\Psi_{\beta}} \\
+    \end{bmatrix*}}
+    \\ &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}} + p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} +
+        {\begin{bmatrix*}[l]
+            {\it\Psi_{f\alpha}} \\
+            {\it\Psi_{f\beta}} \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+\end{aligned}
+$$&lt;h3 id=&#34;α-β-flux-leakage&#34;&gt;&lt;em&gt;α-β&lt;/em&gt; flux leakage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{\it{\Psi_{\alpha\beta}}}}={\pmb{L_{\alpha\beta} i_{\alpha\beta}}}+{\pmb{\it{\Psi_{f\alpha\beta}}}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix*}[l]
+        {\it\Psi_{\alpha}} \\
+        {\it\Psi_{\beta}} \\
+    \end{bmatrix*}} &amp;=
+    {{\begin{bmatrix}
+        L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+        M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+    \end{bmatrix}}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} +
+    {\begin{bmatrix*}[l]
+        {\it\Psi_{f\alpha}} \\
+        {\it\Psi_{f\beta}} \\
+    \end{bmatrix*}} \\ &amp;=
+    {{\begin{bmatrix}
+        L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+        M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+    \end{bmatrix}}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} + {\it\Psi_f}
+    {\begin{bmatrix*}[l]
+        \cos\theta_e \\
+        \sin\theta_e \\
+    \end{bmatrix*}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {{\begin{bmatrix}
+        L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+        M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+    \end{bmatrix}}}
+    &amp;=
+    {\begin{bmatrix*}[r]
+        L_{s0}+M_{s0}+3/2\;L_{s2}\cos(2(\theta_e)) &amp; 3/2\;L_{s2}\sin(2(\theta_e))       \\
+        3/2\;L_{s2}\sin(2(\theta_e))             &amp; L_{s0}+M_{s0}-3/2\;L_{s2}\cos(2(\theta_e)) \\
+    \end{bmatrix*}} \\
+    &amp;=
+    {\begin{bmatrix*}[r]
+        (L_d+L_q)/2+(L_d-L_q)/2\;\cos(2(\theta_e)) &amp; (L_d-L_q)/2\;\sin(2(\theta_e))       \\
+        (L_d-L_q)/2\;\sin(2(\theta_e))             &amp; (L_d+L_q)/2-(L_d-L_q)/2\;\cos(2(\theta_e)) \\
+    \end{bmatrix*}}\\
+    &amp;=
+    {\begin{bmatrix*}[r]
+        \Sigma L+\Delta L\;\cos(2(\theta_e)) &amp;          \Delta L\;\sin(2(\theta_e)) \\
+                 \Delta L\;\sin(2(\theta_e)) &amp; \Sigma L-\Delta L\;\cos(2(\theta_e)) \\
+    \end{bmatrix*}}
+\end{aligned}
+$$&lt;h2 id=&#34;d-q&#34;&gt;&lt;em&gt;d-q&lt;/em&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;α-β-to-d-q&#34;&gt;&lt;em&gt;α-β&lt;/em&gt; to &lt;em&gt;d-q&lt;/em&gt;
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}} + p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\pmb{T}_{\text{2s-2r}}^{-1}}
+        {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}} &amp;=
+    {\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +{\pmb{T}_{\text{2s-2r}}}\;p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\pmb{T}_{\text{2s-2r}}^{-1}}
+        {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\
+\end{aligned}
+$$$$
+\begin{aligned}
+    &amp;{\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}} =
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}} \\
+    &amp;{\pmb{T}_{\text{2s-2r}}} \;p
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\pmb{T}_{\text{2s-2r}}^{-1}}
+        {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\ &amp;= p
+    {\begin{Bmatrix}
+        {\pmb{T}_{\text{2s-2r}}}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\pmb{T}_{\text{2s-2r}}^{-1}}
+        {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\it\Psi_f}\;
+        {\pmb{T}_{\text{2s-2r}}}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} - (p\;{\pmb{T}_{\text{2s-2r}}})
+    {\begin{Bmatrix}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} &amp; M_{\alpha\beta} \\
+            M_{\beta\alpha}  &amp; L_{\beta\beta}  \\
+        \end{bmatrix}}}
+        {\pmb{T}_{\text{2s-2r}}^{-1}}
+        {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\it\Psi_f}
+        {\begin{bmatrix*}[l]
+            \cos\theta_e \\
+            \sin\theta_e \\
+        \end{bmatrix*}}
+    \end{Bmatrix}} \\ &amp;= p
+    {\begin{bmatrix*}[c]
+        L_{s0}+M_{s0}+3/2\;L_{s2} &amp; 0                         \\
+        0                         &amp; L_{s0}+M_{s0}-3/2\;L_{s2} \\
+    \end{bmatrix*}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}\\ &amp;-
+    {\begin{bmatrix}
+        0 &amp; \omega_e(L_{s0}+M_{s0}-3/2\;L_{s2}) \\
+        -\omega_e(L_{s0}+M_{s0}+3/2\;L_{s2})  &amp; 0  \\
+    \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} - \omega_e{\it\Psi_f}
+    {\begin{bmatrix} 0 \\ -1 \\ \end{bmatrix}} \\ &amp;= p
+    {\begin{bmatrix} L_d &amp; 0 \\ 0  &amp; L_q \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +
+    {\begin{bmatrix} 0 &amp; -{\omega_eL_q} \\ {\omega_eL_d}  &amp; 0 \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + \omega_e{\it\Psi_f}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+\end{aligned}
+$$&lt;h3 id=&#34;d-q-voltage&#34;&gt;&lt;em&gt;d-q&lt;/em&gt; voltage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{u_{dq}}} &amp;= {\pmb{R_s i_{dq}}}+ {\frac{d}{dt}}{\pmb{\it{\Psi_{dq}}}}+ {\omega_e}
+    {\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \\ \end{bmatrix}}
+    {\pmb{\it{\Psi_{dq}}}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}} &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
+    +p
+    {\begin{bmatrix*}[l]
+        {\it\Psi_{d}} \\
+        {\it\Psi_{q}} \\
+    \end{bmatrix*}} + {\omega_e}
+    {\begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \\ \end{bmatrix}}
+        {\begin{bmatrix*}[l]
+        {\it\Psi_{d}} \\
+        {\it\Psi_{q}} \\
+    \end{bmatrix*}} \\ &amp;=
+    {\begin{bmatrix} R_s &amp; 0\\ 0 &amp; R_s \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +p
+    {\begin{bmatrix} L_d &amp; 0 \\ 0  &amp; L_q \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +
+    {\begin{bmatrix} 0 &amp; -{\omega_eL_q} \\ {\omega_eL_d}  &amp; 0 \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + \omega_e{\it\Psi_f}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+\end{aligned}
+$$&lt;h3 id=&#34;d-q-flux-leakage&#34;&gt;&lt;em&gt;d-q&lt;/em&gt; flux leakage
+&lt;/h3&gt;$$
+\begin{aligned}
+    {\pmb{\it{\Psi_{dq}}}}={\pmb{L_{dq} i_{dq}}}+{\pmb{\it{\Psi_{fdq}}}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {\begin{bmatrix*}
+        {\it\Psi_{d}} \\
+        {\it\Psi_{q}} \\
+    \end{bmatrix*}} =
+    {{\begin{bmatrix}
+        L_d &amp; 0 \\
+        0  &amp; L_q  \\
+    \end{bmatrix}}}
+    {\begin{bmatrix*}[l]
+        {i_d} \\
+        {i_q} \\
+    \end{bmatrix*}}+{\it\Psi_f}{\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+\end{aligned}
+$$$$
+\begin{aligned}
+    {{\begin{bmatrix}
+        L_d &amp; 0 \\
+        0  &amp; L_q  \\
+    \end{bmatrix}}}
+    &amp;=
+    {\begin{bmatrix*}[c]
+        L_{s0}+M_{s0}+3/2\;L_{s2} &amp; 0 \\
+        0                         &amp; L_{s0}+M_{s0}-3/2\;L_{s2} \\
+    \end{bmatrix*}}
+\end{aligned}
+$$</description>
+        </item>
+        
+    </channel>
+</rss>
