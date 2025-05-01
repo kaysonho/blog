@@ -1,42 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Categories on Example Site</title>
+        <title>Categories on 奇正</title>
         <link>http://localhost:1313/categories/</link>
-        <description>Recent content in Categories on Example Site</description>
+        <description>Recent content in Categories on 奇正</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Example Person</copyright>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Syntax</title>
-        <link>http://localhost:1313/categories/syntax/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <language>zh-cn</language>
+        <copyright>HE Qizheng</copyright>
+        <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>MOTOR</title>
+        <link>http://localhost:1313/categories/motor/</link>
+        <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/categories/syntax/</guid>
+        <guid>http://localhost:1313/categories/motor/</guid>
         <description></description>
         </item>
         <item>
-        <title>Themes</title>
-        <link>http://localhost:1313/categories/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Test</title>
+        <title>TEST</title>
         <link>http://localhost:1313/categories/test/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/categories/test/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <description></description>
         </item>
         <item>
-        <title>Test With Whitespaces</title>
-        <link>http://localhost:1313/categories/test-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <title>CONTROL</title>
+        <link>http://localhost:1313/categories/control/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/categories/test-with-whitespaces/</guid>
+        <guid>http://localhost:1313/categories/control/</guid>
         <description></description>
         </item>
         
