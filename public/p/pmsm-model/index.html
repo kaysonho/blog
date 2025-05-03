@@ -2,16 +2,16 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Modeling of permanent magnet synchronous motor.">
-<title>PMSM model</title>
+<title>PMSM Model</title>
 
 <link rel='canonical' href='http://localhost:1313/p/pmsm-model/'>
 
-<link rel="stylesheet" href="/scss/style.min.61bb42f3ba3a059cf022b4dd7b3a3fa042ccdca719a3539f96ecde99559e8f2e.css"><meta property='og:title' content="PMSM model">
+<link rel="stylesheet" href="/scss/style.min.61bb42f3ba3a059cf022b4dd7b3a3fa042ccdca719a3539f96ecde99559e8f2e.css"><meta property='og:title' content="PMSM Model">
 <meta property='og:description' content="Modeling of permanent magnet synchronous motor.">
 <meta property='og:url' content='http://localhost:1313/p/pmsm-model/'>
 <meta property='og:site_name' content='奇正'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PMSM' /><meta property='article:published_time' content='2025-04-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-29T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="PMSM model">
+<meta name="twitter:title" content="PMSM Model">
 <meta name="twitter:description" content="Modeling of permanent magnet synchronous motor.">
     </head>
     <body class="
@@ -261,28 +261,33 @@
   <ol>
     <li><a href="#transformation">Transformation</a>
       <ol>
-        <li><a href="#clark--3s-2s">CLARK / 3s-2s</a></li>
-        <li><a href="#park--2s-2r">PARK / 2s-2r</a></li>
+        <li><a href="#abc-to-α-β--3s-2s"><em>abc</em> to <em>α-β</em> / 3s-2s</a></li>
+        <li><a href="#α-β-to-d-q--2s-2r"><em>α-β</em> to <em>d-q</em> / 2s-2r</a></li>
       </ol>
     </li>
     <li><a href="#a-b-c"><em>a-b-c</em></a>
       <ol>
-        <li><a href="#voltage">voltage</a></li>
-        <li><a href="#flux-leakage">flux leakage</a></li>
+        <li><a href="#voltage">Voltage</a></li>
+        <li><a href="#flux-leakage">Flux Leakage</a></li>
+        <li><a href="#torque">Torque</a></li>
+        <li><a href="#voltage-1">Voltage</a></li>
       </ol>
     </li>
     <li><a href="#α-β"><em>α-β</em></a>
       <ol>
         <li><a href="#a-b-c-to-α-β"><em>a-b-c</em> to <em>α-β</em></a></li>
-        <li><a href="#α-β-voltage"><em>α-β</em> voltage</a></li>
-        <li><a href="#α-β-flux-leakage"><em>α-β</em> flux leakage</a></li>
+        <li><a href="#α-β-voltage"><em>α-β</em> Voltage</a></li>
+        <li><a href="#α-β-flux-leakage"><em>α-β</em> Flux Leakage</a></li>
+        <li><a href="#α-β-torque"><em>α-β</em> Torque</a></li>
       </ol>
     </li>
     <li><a href="#d-q"><em>d-q</em></a>
       <ol>
         <li><a href="#α-β-to-d-q"><em>α-β</em> to <em>d-q</em></a></li>
-        <li><a href="#d-q-voltage"><em>d-q</em> voltage</a></li>
-        <li><a href="#d-q-flux-leakage"><em>d-q</em> flux leakage</a></li>
+        <li><a href="#d-q-voltage"><em>d-q</em> Voltage</a></li>
+        <li><a href="#d-q-flux-leakage"><em>d-q</em> Flux Leakage</a></li>
+        <li><a href="#d-q-torque"><em>d-q</em> Torque</a></li>
+        <li><a href="#rewritten-α-β-voltage">rewritten <em>α-β</em> voltage</a></li>
       </ol>
     </li>
   </ol>
@@ -304,7 +309,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/pmsm-model/">PMSM model</a>
+            <a href="/p/pmsm-model/">PMSM Model</a>
         </h2>
     
         
@@ -383,50 +388,50 @@
     <section class="article-content">
     
     
-    <h1 id="pmsm-model">PMSM model
+    <h1 id="pmsm-model">PMSM Model
 </h1><h2 id="transformation">Transformation
-</h2><h3 id="clark--3s-2s">CLARK / 3s-2s
+</h2><h3 id="abc-to-α-β--3s-2s"><em>abc</em> to <em>α-β</em> / 3s-2s
 </h3>$$
 \begin{aligned}
-    \begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix} &= \frac{2}{3}
+    \begin{bmatrix} f_{\alpha} \\ f_{\beta} \\ f_0 \\ \end{bmatrix} &= \frac{2}{3}
     \begin{bmatrix*}
         1          & -1/2       & -1/2        \\
         0          & \sqrt{3}/2 & -\sqrt{3}/2 \\
         1/\sqrt{2} & 1/\sqrt{2} & 1/\sqrt{2}  \\
     \end{bmatrix*}
-    \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix}  
-    = \pmb{T}_{\text{3s-2s}} \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix} \\
-    \begin{bmatrix} a \\ b \\ c \\ \end{bmatrix} &= \phantom{-}
+    \begin{bmatrix} f_a \\ f_b \\ f_c \\ \end{bmatrix}  
+    = \pmb{T}_{\text{3s-2s}} \begin{bmatrix} f_a \\ f_b \\ f_c \\ \end{bmatrix} \\
+    \begin{bmatrix} f_a \\ f_b \\ f_c \\ \end{bmatrix} &= \phantom{-}
     \begin{bmatrix*}
         1    & 0           & 1/\sqrt{2} \\
         -1/2 & \sqrt{3}/2  & 1/\sqrt{2} \\
         -1/2 & -\sqrt{3}/2 & 1/\sqrt{2} \\
     \end{bmatrix*}
-    \begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix}  
-    =\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} \alpha \\ \beta \\ 0 \\ \end{bmatrix}
+    \begin{bmatrix} f_{\alpha} \\ f_{\beta} \\ f_0 \\ \end{bmatrix}  
+    =\pmb{T}_{\text{3s-2s}}^{-1}\begin{bmatrix} f_{\alpha} \\ f_{\beta} \\ f_0 \\ \end{bmatrix}
 \end{aligned}
-$$<h3 id="park--2s-2r">PARK / 2s-2r
+$$<h3 id="α-β-to-d-q--2s-2r"><em>α-β</em> to <em>d-q</em> / 2s-2r
 </h3>$$
 \begin{aligned}
-    {\begin{bmatrix} d \\ q \\ \end{bmatrix}} &=
-    {\begin{bmatrix*}
-        \phantom{-}\cos\theta_e & -\sin\theta_e \\
-        \phantom{-}\sin\theta_e & \phantom{-}\cos\theta_e\\
-    \end{bmatrix*}}
-    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}}
-    ={\pmb{T}_{\text{2s-2r}}}
-    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}}\\
-    {\begin{bmatrix} \alpha \\ \beta \end{bmatrix}} &=
+    {\begin{bmatrix} f_d \\ f_q \\ \end{bmatrix}} &=
     {\begin{bmatrix*}
         \phantom{-}\cos\theta_e & \phantom{-}\sin\theta_e \\
         -\sin\theta_e & \phantom{-}\cos\theta_e\\
     \end{bmatrix*}}
-    {\begin{bmatrix} d \\ q \end{bmatrix}}    =
+    {\begin{bmatrix} f_\alpha \\ f_\beta \end{bmatrix}}
+    ={\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} f_\alpha \\ f_\beta \end{bmatrix}}\\
+    {\begin{bmatrix} f_\alpha \\ f_\beta \end{bmatrix}} &=
+    {\begin{bmatrix*}
+        \phantom{-}\cos\theta_e & -\sin\theta_e \\
+        \phantom{-}\sin\theta_e & \phantom{-}\cos\theta_e\\
+    \end{bmatrix*}}
+    {\begin{bmatrix} f_d \\ f_q \end{bmatrix}}    =
     {\pmb{T}_{\text{2s-2r}}^{-1}}
-    {\begin{bmatrix} d \\ q \end{bmatrix}  }
+    {\begin{bmatrix} f_d \\ f_q \end{bmatrix}  }
 \end{aligned}
 $$<h2 id="a-b-c"><em>a-b-c</em>
-</h2><h3 id="voltage">voltage
+</h2><h3 id="voltage">Voltage
 </h3>$$
 \begin{aligned}
     {\pmb{u_s}} &= \pmb{R_s i_s}+ \frac{d}{dt} \pmb{\it{\Psi_s}}
@@ -450,7 +455,7 @@ $$$$
         {\begin{bmatrix} \it{\Psi}_{fa} \\ \it{\Psi}_{fb} \\ \it{\Psi}_{fc} \\ \end{bmatrix}}
     \end{Bmatrix}} \\
 \end{aligned}
-$$<h3 id="flux-leakage">flux leakage
+$$<h3 id="flux-leakage">Flux Leakage
 </h3>$$
 \begin{aligned}
     {\pmb{\it{\Psi_s}}}={\pmb{L_s i_s}}+{\pmb{\it{\Psi_f}}}
@@ -492,7 +497,9 @@ $$$$
         -M_{s0}+L_{s2}\cos(2(\theta_e+\pi/3)) & -M_{s0}+L_{s2}\cos(2(\theta_e)) &\phantom{-}L_{s0}\;+L_{s2}\cos(2(\theta_e+2\pi/3)) \\
     \end{bmatrix*}}
 \end{aligned}
-$$<h2 id="α-β"><em>α-β</em>
+$$<h3 id="torque">Torque
+</h3><h3 id="voltage-1">Voltage
+</h3><h2 id="α-β"><em>α-β</em>
 </h2><h3 id="a-b-c-to-α-β"><em>a-b-c</em> to <em>α-β</em>
 </h3>$$
 \begin{aligned}
@@ -573,36 +580,63 @@ $$$$
         \sin(\theta_e)
     \end{bmatrix*}}
 \end{aligned}
-$$<h3 id="α-β-voltage"><em>α-β</em> voltage
+$$<h3 id="α-β-voltage"><em>α-β</em> Voltage
 </h3>$$
 \begin{aligned}
     {\pmb{u_{\alpha\beta}}} &= \pmb{R_s i_{\alpha\beta}}+ \frac{d}{dt} \pmb{\it{\Psi_{\alpha\beta}}}
 \end{aligned}
 $$$$
 \begin{aligned}
-    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} &=
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}}
+    &=
     {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}} + p
+    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}}
+    + p
     {\begin{bmatrix*}[l]
         {\it\Psi_{\alpha}} \\
         {\it\Psi_{\beta}} \\
     \end{bmatrix*}}
     \\ &=
     {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}} + p
+    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}}
+    + p
     {\begin{Bmatrix}
         {{\begin{bmatrix}
             L_{\alpha\alpha} & M_{\alpha\beta} \\
             M_{\beta\alpha}  & L_{\beta\beta}  \\
         \end{bmatrix}}}
-        {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}} +
+        {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}}
+        +
         {\begin{bmatrix*}[l]
             {\it\Psi_{f\alpha}} \\
             {\it\Psi_{f\beta}} \\
         \end{bmatrix*}}
     \end{Bmatrix}} \\
+    &=
+    {\begin{bmatrix*}[r]
+        R_s+pL_{\alpha\alpha} & p M_{\alpha\beta}\\
+        p M_{\beta\alpha} & R_s +pL_{\beta\beta}
+    \end{bmatrix*}}
+    {\begin{bmatrix} i_\alpha \\ i_\beta \\ \end{bmatrix}}
+    +
+    {\omega_e{\it\Psi_f}}
+    {\begin{bmatrix*}[r]
+        -\sin\theta_e \\
+        \cos\theta_e \\
+    \end{bmatrix*}} \\
+    &=
+    {\begin{bmatrix*}[c]
+        R_s+p L_d & \omega_e (L_d-L_q)\\
+        -\omega_e (L_d-L_q) & R_s +pL_d
+    \end{bmatrix*}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}}
+    +
+    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
+    {\begin{bmatrix*}[r] -\sin\theta_e \\ \cos\theta_e \\ \end{bmatrix*}}
 \end{aligned}
-$$<h3 id="α-β-flux-leakage"><em>α-β</em> flux leakage
+$$<p>
+Define $(L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}}$ as extended electromotive force, EEMF.</p>
+<h3 id="α-β-flux-leakage"><em>α-β</em> Flux Leakage
 </h3>$$
 \begin{aligned}
     {\pmb{\it{\Psi_{\alpha\beta}}}}={\pmb{L_{\alpha\beta} i_{\alpha\beta}}}+{\pmb{\it{\Psi_{f\alpha\beta}}}}
@@ -652,7 +686,13 @@ $$$$
     {\begin{bmatrix*}[r]
         \Sigma L+\Delta L\;\cos(2(\theta_e)) &          \Delta L\;\sin(2(\theta_e)) \\
                  \Delta L\;\sin(2(\theta_e)) & \Sigma L-\Delta L\;\cos(2(\theta_e)) \\
-    \end{bmatrix*}}
+    \end{bmatrix*}} ,
+    {\begin{pmatrix} \Sigma L = (L_d+L_q)/2 \\ \Delta L = (L_d-L_q)/2 \end{pmatrix}}
+\end{aligned}
+$$<h3 id="α-β-torque"><em>α-β</em> Torque
+</h3>$$
+\begin{aligned}
+    T_e=\frac{3}{2}p_n[\it\Psi_{\alpha} i_{\beta}-\it\Psi_{\beta} i_{\alpha}]
 \end{aligned}
 $$<h2 id="d-q"><em>d-q</em>
 </h2><h3 id="α-β-to-d-q"><em>α-β</em> to <em>d-q</em>
@@ -762,15 +802,15 @@ $$$$
         0 & \omega_e(L_{s0}+M_{s0}-3/2\;L_{s2}) \\
         -\omega_e(L_{s0}+M_{s0}+3/2\;L_{s2})  & 0  \\
     \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} - \omega_e{\it\Psi_f}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} - {\omega_e{\it\Psi_f}}
     {\begin{bmatrix} 0 \\ -1 \\ \end{bmatrix}} \\ &= p
     {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
     {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +
-    {\begin{bmatrix} 0 & -{\omega_eL_q} \\ {\omega_eL_d}  & 0 \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + \omega_e{\it\Psi_f}
+    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\omega_e{\it\Psi_f}}
     {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
 \end{aligned}
-$$<h3 id="d-q-voltage"><em>d-q</em> voltage
+$$<h3 id="d-q-voltage"><em>d-q</em> Voltage
 </h3>$$
 \begin{aligned}
     {\pmb{u_{dq}}} &= {\pmb{R_s i_{dq}}}+ {\frac{d}{dt}}{\pmb{\it{\Psi_{dq}}}}+ {\omega_e}
@@ -796,11 +836,18 @@ $$$$
     {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +p
     {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
     {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +
-    {\begin{bmatrix} 0 & -{\omega_eL_q} \\ {\omega_eL_d}  & 0 \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + \omega_e{\it\Psi_f}
-    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\omega_e{\it\Psi_f}}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\ &=
+    {\begin{bmatrix*}[r]
+        R_s+p L_d & -{\omega_e L_q} \\
+        {\omega_e L_d} & R_s+p L_q
+    \end{bmatrix*}}
+    +
+    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
+    {\begin{bmatrix*}[r] 0 \\ 1 \\ \end{bmatrix*}}
 \end{aligned}
-$$<h3 id="d-q-flux-leakage"><em>d-q</em> flux leakage
+$$<h3 id="d-q-flux-leakage"><em>d-q</em> Flux Leakage
 </h3>$$
 \begin{aligned}
     {\pmb{\it{\Psi_{dq}}}}={\pmb{L_{dq} i_{dq}}}+{\pmb{\it{\Psi_{fdq}}}}
@@ -818,7 +865,7 @@ $$$$
     {\begin{bmatrix*}[l]
         {i_d} \\
         {i_q} \\
-    \end{bmatrix*}}+{\it\Psi_f}{\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+    \end{bmatrix*}}+{\it\Psi_f}{\begin{bmatrix} 1 \\ 0 \\ \end{bmatrix}}
 \end{aligned}
 $$$$
 \begin{aligned}
@@ -831,6 +878,79 @@ $$$$
         L_{s0}+M_{s0}+3/2\;L_{s2} & 0 \\
         0                         & L_{s0}+M_{s0}-3/2\;L_{s2} \\
     \end{bmatrix*}}
+\end{aligned}
+$$<h3 id="d-q-torque"><em>d-q</em> Torque
+</h3>$$
+\begin{aligned}
+    T_e &= 3/2\; p_n[\it\Psi_d i_q-\it\Psi_q i_d] \\
+        &= 3/2\; p_n[(L_d-L_q)i_d i_q+\it\Psi_f i_q]
+\end{aligned}
+$$$$
+\begin{aligned}
+    T_e = \underbrace{3/2\; p_n (L_d-L_q)i_d i_q}_{\text{Reluctance torque}}
+    +\underbrace{3/2\; p_n \it\Psi_f i_q}_{\text{Magnet torque}}
+\end{aligned}
+$$<h3 id="rewritten-α-β-voltage">rewritten <em>α-β</em> voltage
+</h3>$$
+\begin{aligned}
+    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}}
+    &=
+    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
+    +p
+    {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
+    +
+    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
+    +
+    {\omega_e{\it\Psi_f}}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
+    {\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} u_{\alpha} \\ u_{\beta} \end{bmatrix}}
+    &=
+    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    +p
+    {\begin{Bmatrix*}
+        {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
+        {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    \end{Bmatrix*}}
+    +
+    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    +
+    {\omega_e{\it\Psi_f}}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
+    {\begin{bmatrix} u_{\alpha} \\ u_{\beta} \end{bmatrix}}
+    &=
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    +
+    {\pmb{T}_{\text{2s-2r}}^{-1}}\; p
+    {\begin{Bmatrix*}
+        {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
+        {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    \end{Bmatrix*}} +
+    {\pmb{T}_{\text{2s-2r}}^{-1}}\;
+    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
+    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    +
+    {\omega_e{\it\Psi_f}}\;
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
+    &=
+    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
+    +
+    {\begin{Bmatrix*}
+        ?
+    \end{Bmatrix*}}
+    +
+    {\omega_e{\it\Psi_f}}
+    {\begin{bmatrix*}[r] -\sin \theta_e \\ \cos \theta_e \\ \end{bmatrix*}} \\
 \end{aligned}
 $$
 </section>
@@ -874,6 +994,28 @@ $$
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/sensorless-control-based-on-eemf-observer/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Sensorless Control based on EEMF Observer</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

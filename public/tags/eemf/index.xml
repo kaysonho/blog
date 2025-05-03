@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>EEMF on 奇正</title>
+        <link>http://localhost:1313/tags/eemf/</link>
+        <description>Recent content in EEMF on 奇正</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>HE Qizheng</copyright>
+        <lastBuildDate>Sat, 03 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/eemf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Sensorless Control based on EEMF Observer</title>
+        <link>http://localhost:1313/p/sensorless-control-based-on-eemf-observer/</link>
+        <pubDate>Sat, 03 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/sensorless-control-based-on-eemf-observer/</guid>
+        <description>&lt;h1 id=&#34;pmsm-model&#34;&gt;PMSM model
+&lt;/h1&gt;&lt;h2 id=&#34;voltage-equation&#34;&gt;Voltage Equation
+&lt;/h2&gt;&lt;p&gt;Rewritten the &lt;em&gt;α-β&lt;/em&gt; voltage equation,
+&lt;/p&gt;
+$$
+\begin{aligned}
+    {\begin{bmatrix} u_\alpha \\ u_\beta \\ \end{bmatrix}}
+    &amp;=
+    {\begin{bmatrix*}[c]
+        R_s+p L_d &amp; \omega_e (L_d-L_q)\\
+        -\omega_e (L_d-L_q) &amp; R_s +pL_d
+    \end{bmatrix*}}
+    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}}
+    +
+    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
+    {\begin{bmatrix*}[r] -\sin\theta_e \\ \cos\theta_e \\ \end{bmatrix*}}
+\end{aligned}
+$$&lt;p&gt;Rewritten the &lt;em&gt;d-q&lt;/em&gt; voltage equation,&lt;/p&gt;
+$$
+\begin{aligned}
+    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}}
+    &amp;=
+    {\begin{bmatrix*}[r]
+        R_s+p L_d &amp; -{\omega_e L_q} \\
+        {\omega_e L_d} &amp; R_s+p L_q
+    \end{bmatrix*}}
+    +
+    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
+    {\begin{bmatrix*}[r] 0 \\ 1 \\ \end{bmatrix*}}
+\end{aligned}
+$$&lt;p&gt;Define $(L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}}$ as extended electromotive force, EEMF.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

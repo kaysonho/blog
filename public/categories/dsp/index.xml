@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>DSP on 奇正</title>
+        <link>http://localhost:1313/categories/dsp/</link>
+        <description>Recent content in DSP on 奇正</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>HE Qizheng</copyright><atom:link href="http://localhost:1313/categories/dsp/index.xml" rel="self" type="application/rss+xml" />
+    </channel>
+</rss>
