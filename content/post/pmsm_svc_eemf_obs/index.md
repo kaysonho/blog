@@ -8,16 +8,18 @@ categories:
     - CONTROL
 tags: 
     - PMSM
-    - SENSORLESS
+    - MODEL
     - EEMF
+    - SENSORLESS
     - OBSERVER
 math: true
 ---
 
-# PMSM model
+# PMSM EEMF Model
 
 ## Voltage Equation
 
+Define $(L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}}$ as extended electromotive force, EEMF.  
 Rewritten the *α-β* voltage equation,
 $$
 \begin{aligned}
@@ -42,12 +44,13 @@ $$
     &=
     {\begin{bmatrix*}[r]
         R_s+p L_d & -{\omega_e L_q} \\
-        {\omega_e L_d} & R_s+p L_q
+        {\omega_e L_q} & R_s+p L_d
     \end{bmatrix*}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
     +
     {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
     {\begin{bmatrix*}[r] 0 \\ 1 \\ \end{bmatrix*}}
 \end{aligned}
 $$
 
-Define $(L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}}$ as extended electromotive force, EEMF.  
+

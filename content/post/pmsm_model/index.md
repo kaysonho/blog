@@ -142,8 +142,6 @@ $$
 
 ### Torque
 
-### Voltage
-
 ## *α-β*
 
 ### *a-b-c* to *α-β*
@@ -278,18 +276,8 @@ $$
         -\sin\theta_e \\
         \cos\theta_e \\
     \end{bmatrix*}} \\
-    &=
-    {\begin{bmatrix*}[c]
-        R_s+p L_d & \omega_e (L_d-L_q)\\
-        -\omega_e (L_d-L_q) & R_s +pL_d
-    \end{bmatrix*}}
-    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \\ \end{bmatrix}}
-    +
-    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
-    {\begin{bmatrix*}[r] -\sin\theta_e \\ \cos\theta_e \\ \end{bmatrix*}}
 \end{aligned}
 $$
-Define $(L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}}$ as extended electromotive force, EEMF.
 
 ### *α-β* Flux Leakage
 
@@ -421,8 +409,7 @@ $$
     &{\pmb{T}_{\text{2s-2r}}}
     {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
     {\pmb{T}_{\text{2s-2r}}^{-1}} =
-    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\pmb{T}_{\text{2s-2r}}^{-1}} \\
+    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}\\
     &{\pmb{T}_{\text{2s-2r}}} \;p
     {\begin{Bmatrix}
         {{\begin{bmatrix}
@@ -435,7 +422,8 @@ $$
             \cos\theta_e \\
             \sin\theta_e \\
         \end{bmatrix*}}
-    \end{Bmatrix}} \\ &= p
+    \end{Bmatrix}} 
+    \\ &= p
     {\begin{Bmatrix}
         {\pmb{T}_{\text{2s-2r}}}
         {{\begin{bmatrix}
@@ -461,23 +449,37 @@ $$
             \cos\theta_e \\
             \sin\theta_e \\
         \end{bmatrix*}}
-    \end{Bmatrix}} \\ &= p
+    \end{Bmatrix}} 
+    \\
+    \\
+    &{\pmb{T}_{\text{2s-2r}}}
+        {{\begin{bmatrix}
+            L_{\alpha\alpha} & M_{\alpha\beta} \\
+            M_{\beta\alpha}  & L_{\beta\beta}  \\
+        \end{bmatrix}}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    =
     {\begin{bmatrix*}[c]
         L_{s0}+M_{s0}+3/2\;L_{s2} & 0                         \\
         0                         & L_{s0}+M_{s0}-3/2\;L_{s2} \\
     \end{bmatrix*}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}\\ &-
+    \\
+    &(p\;{\pmb{T}_{\text{2s-2r}}})
+    {{\begin{bmatrix}
+            L_{\alpha\alpha} & M_{\alpha\beta} \\
+            M_{\beta\alpha}  & L_{\beta\beta}  \\
+        \end{bmatrix}}}
+    {\pmb{T}_{\text{2s-2r}}^{-1}}
+    =
     {\begin{bmatrix}
         0 & \omega_e(L_{s0}+M_{s0}-3/2\;L_{s2}) \\
         -\omega_e(L_{s0}+M_{s0}+3/2\;L_{s2})  & 0  \\
-    \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} - {\omega_e{\it\Psi_f}}
-    {\begin{bmatrix} 0 \\ -1 \\ \end{bmatrix}} \\ &= p
-    {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} +
-    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}} + {\omega_e{\it\Psi_f}}
-    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}}
+    \end{bmatrix}}\\
+    &(p\;{\pmb{T}_{\text{2s-2r}}})
+    {\begin{bmatrix*}[l]
+        \cos\theta_e \\
+        \sin\theta_e \\
+    \end{bmatrix*}} = {\omega_e}{\begin{bmatrix} 0 \\ -1 \\ \end{bmatrix}}
 \end{aligned}
 $$
 
@@ -517,8 +519,9 @@ $$
         R_s+p L_d & -{\omega_e L_q} \\
         {\omega_e L_d} & R_s+p L_q
     \end{bmatrix*}}
+    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
     +
-    {\begin{Bmatrix} (L_d-L_q)(\omega_e i_d -p i_q)+{\omega_e{\it\Psi_f}} \end{Bmatrix}}
+    {\omega_e{\it\Psi_f}}
     {\begin{bmatrix*}[r] 0 \\ 1 \\ \end{bmatrix*}}
 \end{aligned}
 $$
@@ -577,70 +580,3 @@ $$
     +\underbrace{3/2\; p_n \it\Psi_f i_q}_{\text{Magnet torque}}
 \end{aligned}
 $$
-
-
-### rewritten *α-β* voltage
-
-$$
-\begin{aligned}
-    {\begin{bmatrix} u_d \\ u_q \end{bmatrix}}
-    &=
-    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
-    +p
-    {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
-    +
-    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
-    {\begin{bmatrix} i_d \\ i_q \\ \end{bmatrix}}
-    +
-    {\omega_e{\it\Psi_f}}
-    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
-    {\pmb{T}_{\text{2s-2r}}}
-    {\begin{bmatrix} u_{\alpha} \\ u_{\beta} \end{bmatrix}}
-    &=
-    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    +p
-    {\begin{Bmatrix*}
-        {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
-        {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    \end{Bmatrix*}}
-    +
-    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
-    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    +
-    {\omega_e{\it\Psi_f}}
-    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
-    {\begin{bmatrix} u_{\alpha} \\ u_{\beta} \end{bmatrix}}
-    &=
-    {\pmb{T}_{\text{2s-2r}}^{-1}}
-    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\pmb{T}_{\text{2s-2r}}}
-    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    +
-    {\pmb{T}_{\text{2s-2r}}^{-1}}\; p
-    {\begin{Bmatrix*}
-        {\begin{bmatrix} L_d & 0 \\ 0  & L_q \\ \end{bmatrix}}
-        {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    \end{Bmatrix*}} +
-    {\pmb{T}_{\text{2s-2r}}^{-1}}\;
-    {\begin{bmatrix} 0 & -{\omega_e L_q} \\ {\omega_e L_d}  & 0 \\ \end{bmatrix}}
-    {\pmb{T}_{\text{2s-2r}}} {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    +
-    {\omega_e{\it\Psi_f}}\;
-    {\pmb{T}_{\text{2s-2r}}^{-1}}
-    {\begin{bmatrix} 0 \\ 1 \\ \end{bmatrix}} \\
-    &=
-    {\begin{bmatrix} R_s & 0\\ 0 & R_s \end{bmatrix}}
-    {\begin{bmatrix} i_{\alpha} \\ i_{\beta} \end{bmatrix}}
-    +
-    {\begin{Bmatrix*}
-        ?
-    \end{Bmatrix*}}
-    +
-    {\omega_e{\it\Psi_f}}
-    {\begin{bmatrix*}[r] -\sin \theta_e \\ \cos \theta_e \\ \end{bmatrix*}} \\
-\end{aligned}
-$$
-
