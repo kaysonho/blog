@@ -142,6 +142,27 @@ $$
 
 ### Torque
 
+$$
+\begin{aligned}
+    T_e=\frac{P_e}{\omega_m}
+\end{aligned}
+$$
+
+###  Mechanical motion
+
+$$
+\begin{aligned}
+    J \frac{d\omega_m}{dt}&=T_e-T_L-B \omega_m \\
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+    \omega_e =p_n \omega_m
+\end{aligned}
+$$
+
+
 ## *α-β*
 
 ### *a-b-c* to *α-β*
